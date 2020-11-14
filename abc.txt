@@ -1,5 +1,20 @@
-this is sample file. this is changed now
-now here is another change
-another change is added here
-this ia added from github
-34909
+local Person = {name="",age=0}
+
+function Person : new(n,a)
+    local obj = {name=n,age=a}
+    self.__index = self
+    setmetatable(obj,self)
+    return obj
+end
+
+function Person:show()
+    print(self.name.. " is "..self.age)
+end
+
+io.write("Enter name:")
+local n = io.read()
+io.write("Enter age:")
+local a = io.read()
+
+local p1 = Person:new(n,a)
+p1:show()
